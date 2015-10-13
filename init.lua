@@ -74,7 +74,7 @@ local function _page_links(pages, active, dir)
     for k, page in pairs(pages) do
         if not page.hidden then
 	  if page.link == active then
-	    output = output .. '<li class="active"><a href="' .. config.url .. '/sections/' .. dir .. '/' .. page.link .. '/' .. active .. '">' .. page.title .. '</a></li>\n'
+	    output = output .. '<li class="active"><a href="' .. config.url .. '/sections/' .. dir .. '/' .. active .. '">' .. page.title .. '</a></li>\n'
 	  else
 	    output = output .. '<li><a href="' .. config.url .. '/sections/' .. dir  .. '/' .. page.link .. '">' .. page.title .. '</a></li>\n'
 	  end
@@ -204,6 +204,29 @@ local function process(inpage, arg)
     lfs.mkdir(config.build_dir .. "/sections")
     lfs.mkdir(outdir)
 
+    local images = {}
+    for f in lfs.dir(dir2) do
+	if f ~= '.' and f ~= '..' and ( f:sub(-4) == '.jpg' or f:sub(-4) == '.png') then
+	    -- print("Image", dir2 .. '/' .. f)
+	    -- XXX verify that it is a JPG file (maybe others are OK)
+	    local img = {
+		-- img0001.jpg
+		imgname = f,
+		-- subdir
+		subdir = dir,
+		-- gallery/subdir/img0001.jpg
+		source = dir2 .. '/' .. f,
+		-- build/gallery/subdir/images/img0001.jpg
+		dest = config.build_dir .. '/' .. dir2 .. '/' .. f,
+	    }
+	    images[#images + 1] = img
+	end
+    end
+    -- copy source images (if changed or missing)
+    for i, img in ipairs(images) do
+	_file_copy(img.source, img.dest)
+    end
+    
     local templates = _load_templates( arg.plugin_path )
     
     local pages = _load_markdowns( dir2, outdir, 'page' )
@@ -224,15 +247,12 @@ local function process(inpage, arg)
 
 	pagelinklist = pagelinklist .. '<li><a href="' .. config.url .. '/sections/' .. dir  .. '/' .. page.link .. '">' .. page.title .. '</a></li>\n'
 
--- 	print ( page.content )
         -- Output the file
         util.write_html(dest_file, page, templates)
     end
     
---     -- copy style.css
+    -- copy style.css
     _file_copy(arg.plugin_path .. '/section_style.css', config.build_dir .. '/inc/template/section_style.css')
-
---     print( pagelinklist )
 
     -- protect from markdown
     return "<ul>" .. pagelinklist .. "</ul>"
