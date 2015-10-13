@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--meta-->
+    <title><? if self:get('single') then ?><?=self:get('post').title ?> - <? end ?><? if self:get('page') then ?><?=self:get('page').title ?> - <? end ?><?=self:get('title') ?></title>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <!--favicon-->
+    <link rel="shortcut icon" href="" />
+    <link rel="icon" href="" type="image/x-icon" />
+
+    <!--style-->
+    <link rel="stylesheet" href="<?=self:get('url') ?>/inc/template/section_style.css" />
+
+    <!--script-->
+    <script type="text/javascript">
+    </script>
+</head>
+<body>
+
+<!--     <div id="wrap">     -->
+<!--         <nav style="height: 1.5em"> -->
+        <nav style="height: 0.5em">
+            <div id="toolbar">
+	    <menu type="toolbar">
+	      <li><a href="../../index.html">HOME</a></li>
+	      <li>
+		  <menu label="<?=self:get('section_name') ?>">		    
+		    <?=self:get('page_links') ?>
+        		<? if self:get('have_posts') then ?>
+                    <li><a href="<?=self:get('url') ?>/index.xml">RSS Feed</a></li>
+        		<? end ?>
+		    
+		  </menu>
+	      </li>
+	    </menu>
+	    </div><!--end toolbar-->
+	    </nav>
+<!-- 	  </div> -->
+<!--end wrap-->
+
+    <div id="wrap">    
+        <div id="header">
+<!-- 	    <img src="<?=self:get('url') ?>inc/cropped-minibee_revB_banner.jpg" alt="Sense/Stage"> -->
+            <h1>
+            <a href="<?=self:get('url') ?>">
+<!--             <span> -->
+	      <img src="<?=self:get('url') ?>/inc/sense.png" width="152" height="49" top="-2" left="-4" alt="Sense">
+<!-- 	    </span> -->
+<!-- 	    <span> -->
+	      <img src="<?=self:get('url') ?>/inc/stage.png" width="195" height="49" top="-2" left="-4" alt="/Stage">
+<!-- 	    </span> -->
+<!--             <?=self:get('title') ?> -->
+            </a>
+            </h1>
+            <h2>A Low Cost, Open Source Wireless Sensor Infrastructure for Live Performance and Interactive, Real-Time Environments</h2>
+            
+            
+            
+<!--            <ul>
+                <?=self:get('page_links') ?>
+        		<? if self:get('have_posts') then ?>
+                    <li><a href="<?=self:get('url') ?>/index.xml">RSS Feed</a></li>
+        		<? end ?>
+            </ul>-->	
+        </div><!--end header-->
