@@ -151,6 +151,10 @@ div.post {
         padding-top: 0px;
         margin-top: 13px;
     }
+    
+    div.post div.content code {
+        background-color: #F5F5F5;
+    }
 
 div#footer {
     margin-bottom: 50px;
