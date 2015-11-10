@@ -43,26 +43,17 @@
 
     <div id="wrap">    
         <div id="header">
-<!-- 	    <img src="<?=self:get('url') ?>inc/cropped-minibee_revB_banner.jpg" alt="Sense/Stage"> -->
             <h1>
             <a href="<?=self:get('url') ?>">
-<!--             <span> -->
-	      <img src="<?=self:get('url') ?>/inc/sense.png" width="152" height="49" top="-2" left="-4" alt="Sense">
-<!-- 	    </span> -->
-<!-- 	    <span> -->
-	      <img src="<?=self:get('url') ?>/inc/stage.png" width="195" height="49" top="-2" left="-4" alt="/Stage">
-<!-- 	    </span> -->
-<!--             <?=self:get('title') ?> -->
+            <?=self:get('title') ?>
             </a>
             </h1>
-            <h2>A Low Cost, Open Source Wireless Sensor Infrastructure for Live Performance and Interactive, Real-Time Environments</h2>
-            
-            
-            
+                                    
 <!--            <ul>
                 <?=self:get('page_links') ?>
         		<? if self:get('have_posts') then ?>
                     <li><a href="<?=self:get('url') ?>/index.xml">RSS Feed</a></li>
         		<? end ?>
-            </ul>-->	
+            </ul>
+-->
         </div><!--end header-->
